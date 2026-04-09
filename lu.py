@@ -1,0 +1,13 @@
+def lu(M:list[list[float]]):
+    """Dada una matriz M regresa su factorización LU"""
+    L = ...
+    U = ...
+
+    ...
+    return L,U
+
+def main():
+    ...
+
+if __name__ == "__main__":
+    main()
