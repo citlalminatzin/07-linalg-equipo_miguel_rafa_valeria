@@ -52,8 +52,10 @@ def triang_sup_to_diag(M: list[list[float]]):
 
     for i in range(1, n):
         for j in range(i + 1, n + 1):
-            aij = M[-j][-i]
-            M[-j] = rowsum(M, -j, -i, -aij)
+            pivote = M[-i][-i]
+            aji = M[-j][-i]
+            M[-j] = rowsum(M, -j, -i, -aji / pivote)
+
     return M
 
 
@@ -68,20 +70,16 @@ def diag(M: list[list[float]]):
 
 
 def main():
-    A_np = np.random.random((3, 3))
-    print(A_np)
-    print()
-    A = A_np.tolist()
-    A_diag = diag(A)
-    print(np.array(A_diag))
-    print()
-
-    B_np = np.random.random((4, 4))
-    print(B_np)
-    print()
-    B = B_np.tolist()
-    B_diag = diag(B)
-    print(np.array(B_diag))
+    A = [
+        [1.0, 2.0, -2.0, 1.0],
+        [4.0, 5.0, -7.0, 6.0],
+        [5.0, 25.0, -15.0, -3],
+        [6.0, -12.0, -6.0, 22.0],
+    ]
+    A = gaussian_elimination(A)
+    print(np.array(A))
+    A = triang_sup_to_diag(A)
+    print(np.array(A))
 
 
 if __name__ == "__main__":
