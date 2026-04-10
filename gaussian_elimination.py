@@ -5,8 +5,15 @@ def rowsum(M: list[list[float]], i: int, j: int, factor: float):
     return [ai + (bi * factor) for ai, bi in zip(M[i], M[j])]
 
 
-def rowmul(M: list[list[float]], i: int, factor: float):
+def rowmult(M: list[list[float]], i: int, factor: float):
     return [ai * factor for ai in M[i]]
+
+
+def rowswap(M: list[list[float]], i: int, j: int):
+    temp = M[i]
+    M[i] = M[j]
+    M[j] = temp
+    return M
 
 
 def gaussian_elimination(M: list[list[float]]):
@@ -14,15 +21,25 @@ def gaussian_elimination(M: list[list[float]]):
     n = len(M)
 
     for i in range(n):
-        pivot = M[i][i]
-        if pivot != 0:
-            M[i] = rowmul(M, i, 1 / pivot)
-        else:
+        # Encuentra el indice del pivote maximo
+        pivotes = []
+        for pivot in range(i, n):
+            pivotes.append(M[pivot][i])
+        max_pivot = max(pivotes, key=abs)
+        max_index = pivotes.index(max_pivot) + i
+        if max_pivot == 0:
             print("Ay...")
             return None
+
+        # Intercambia la fila con el pivote maximo con la actual
+        M = rowswap(M, i, max_index)
+
+        # Elimina los valores debajo de la diagonal
         for j in range(i + 1, n):
-            aij = M[j][i]
-            M[j] = rowsum(M, j, i, -aij)
+            aji = M[j][i]
+            pivot = M[i][i]
+            M[j] = rowsum(M, j, i, -aji / pivot)
+
     return M
 
 
@@ -51,20 +68,20 @@ def diag(M: list[list[float]]):
 
 
 def main():
-    mnp1 = np.random.randint(1, 10, size=(3, 3))
-    print(mnp1)
-    matriz1 = mnp1.tolist()
-    diagonal1 = diag(matriz1)
-    print(np.array(diagonal1))
+    A_np = np.random.random((3, 3))
+    print(A_np)
+    print()
+    A = A_np.tolist()
+    A_diag = diag(A)
+    print(np.array(A_diag))
     print()
 
-    mnp2 = np.random.randint(1, 10, size=(4, 4))
-    print(mnp2)
-    matriz2 = mnp2.tolist()
-    diagonal2 = diag(matriz2)
-    print(np.array(diagonal2))
-
-    # a veces regresa cosas mal por flotantes supongo.
+    B_np = np.random.random((4, 4))
+    print(B_np)
+    print()
+    B = B_np.tolist()
+    B_diag = diag(B)
+    print(np.array(B_diag))
 
 
 if __name__ == "__main__":
