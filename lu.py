@@ -7,10 +7,6 @@ def lu(M: list[list[float]], partial_pivot: bool = False):
     n = len(M)
     U = [row for row in M]
 
-    print("Matriz inicial")
-    print(np.array(M))
-    print()
-
     # Inicializa la matriz L como la identidad
     L = [[0 for _ in range(n)] for _ in range(n)]
     for i in range(n):
@@ -43,21 +39,6 @@ def lu(M: list[list[float]], partial_pivot: bool = False):
                 L[max_index][i] = aji / max_pivot
                 U[j] = rowsum(U, j, i, -aji / max_pivot)
 
-        print("Matriz U")
-        print(np.array(U))
-        print()
-        print("Matriz L")
-        print(np.array(L))
-        print()
-        print("Matriz P")
-        print(np.array(P))
-        print()
-        print("Producto PA")
-        print(np.dot(P, M))
-        print()
-        print("Producto LU")
-        print(np.dot(L, U))
-
         return L, U, P
 
     else:
@@ -72,9 +53,7 @@ def lu(M: list[list[float]], partial_pivot: bool = False):
         return L, U
 
 
-def main():
-    B = [[0.0, 5.0, 22 / 3], [4.0, 2.0, 1.0], [2.0, 7.0, 9.0]]
-    L, U, P = lu(B, True)
+def main(): ...
 
 
 if __name__ == "__main__":
