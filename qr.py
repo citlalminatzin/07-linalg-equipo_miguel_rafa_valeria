@@ -44,33 +44,7 @@ def qr(M: list[list[float]]) -> tuple[list[list[float]], list[list[float]]]:
     return Q, R
 
 
+def main():...
 
-# ─── Prueba rápida ────────────────────────────────────────────────────────────
-#if __name__ == "__main__":
-    from gram_schmidt import matrix_to_str
- 
-    M = [
-        [1.0, 1.0, 0.0],
-        [1.0, 0.0, 1.0],
-        [0.0, 1.0, 1.0],
-    ]
- 
-    Q, R = qr(M)
- 
-    print("Q (debe ser unitaria — columnas ortonormales):")
-    print(matrix_to_str([[round(x, 6) for x in fila] for fila in Q]))
- 
-    print("\nR (debe ser triangular superior):")
-    print(matrix_to_str([[round(x, 6) for x in fila] for fila in R]))
- 
-    # Verificación: reconstruir M = Q * R
-    from gram_schmidt import matmul
-    QR = matmul(Q, R)
-    print("\nQ * R (debe ser igual a M original):")
-    print(matrix_to_str([[round(x, 6) for x in fila] for fila in QR]))
- 
-    # Verificación: Q^T * Q debe ser la identidad
-    Qt = [[Q[k][i] for k in range(len(Q))] for i in range(len(Q[0]))]
-    QtQ = matmul(Qt, Q)
-    print("\nQ^T * Q (debe ser la identidad):")
-    print(matrix_to_str([[round(x, 6) for x in fila] for fila in QtQ]))
+if __name__ == "__main__":
+    main()

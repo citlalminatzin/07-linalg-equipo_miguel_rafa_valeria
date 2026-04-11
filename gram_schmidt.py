@@ -105,22 +105,7 @@ def matrix_to_str(matrix: list[list[float]]) -> str:
     return '\n'.join(table)
 
 
-# ─── Prueba rápida ───────────────────────────────────────────────────────────
-#if __name__ == "__main__":
-    # Tres vectores en R^3 (columnas de una matriz)
-    v1 = [1.0, 1.0, 0.0]
-    v2 = [1.0, 0.0, 1.0]
-    v3 = [0.0, 1.0, 1.0]
- 
-    vectores = [v1, v2, v3]
-    ortonormales = gram_schmidt(vectores)
- 
-    print("Vectores ortonormales (resultado de Gram-Schmidt):")
-    for i, e in enumerate(ortonormales):
-        print(f"  e{i+1} = {[round(x, 6) for x in e]}")
- 
-    print("\nVerificación de ortonormalidad (<ei, ej> debe ser ~0 si i≠j, ~1 si i=j):")
-    for i in range(len(ortonormales)):
-        for j in range(len(ortonormales)):
-            producto = dot(ortonormales[i], ortonormales[j])
-            print(f"  <e{i+1}, e{j+1}> = {round(producto, 6)}")
+def main():...
+
+if __name__ == "__main__":
+   main()
