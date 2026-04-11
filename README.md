@@ -1,11 +1,12 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/R6N_zRdu)
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23491864)
-# Práctica 7
+# Práctica 7  Diagonalización Por Método De Gauss, Factorización LU y Factorización QR
+
 
 ¡Adentrémonos en el increíble mundo del álgebra lineal numérica! OwO
 
 ## Integrantes
 
-- Juro por Amogasiddhi que si no me escriben los integrantes de su equipo empezando por apellido y ordenados de forma alfabética, lloro
+- Domínguez León José Miguel 
+- Lazcano Flores Valeria
+- Sánchez García Rafael 
 
 ## Uso e instalación
