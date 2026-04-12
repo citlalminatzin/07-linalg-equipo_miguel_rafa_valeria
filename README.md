@@ -48,7 +48,7 @@ a & b & c \\
 d & e & f \\
 g & h & i 
 \end{bmatrix}
-\righttarrow
+\rightarrow
 \begin{bmatrix}
 a & b & c \\
 0 & e' & f' \\
@@ -69,7 +69,7 @@ a & b & c \\
 0 & d & e \\
 0 & 0 & f 
 \end{bmatrix}
-\righttarrow
+\rightarrow
 \begin{bmatrix}
 a & 0 & 0 \\
 0 & d & 0 \\
