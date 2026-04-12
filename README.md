@@ -41,7 +41,8 @@ Diagonalización por método de Gauss
 Implementamos el método de eliminación gaussiana para transformar una matriz en forma más simple.
 El proceso tiene dos estapas:
 1. Matriz triangular superior 
-$$
+
+\[
 \begin{bmatrix}
 a & b & c \\
 d & e & f \\
@@ -53,7 +54,8 @@ a & b & c \\
 0 & e' & f' \\
 0 & 0 & i' 
 \end{bmatrix}
-$$
+\]
+
 
 Esto se realiza con:
 - `rowswap`: intercambiar filas
@@ -61,7 +63,7 @@ Esto se realiza con:
 
 2. Matriz diagonal
 Posteriormente eliminamos los valores arriba de la diagonal
-$$
+\[
 \begin{bmatrix}
 a & b & c \\
 0 & d & e \\
@@ -73,7 +75,7 @@ a & 0 & 0 \\
 0 & d & 0 \\
 0 & 0 & f
 \end{bmatrix}
-$$
+\]
 
 Obtenemos una matriz diagonal equivalente a la original.
 
