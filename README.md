@@ -42,20 +42,13 @@ Implementamos el método de eliminación gaussiana para transformar una matriz e
 El proceso tiene dos estapas:
 1. Matriz triangular superior 
 
-\[
-\begin{bmatrix}
-a & b & c \\
-d & e & f \\
-g & h & i 
-\end{bmatrix}
-\rightarrow
-\begin{bmatrix}
-a & b & c \\
-0 & e' & f' \\
-0 & 0 & i' 
-\end{bmatrix}
-\]
-
+[a b c
+d e f
+g h i]
+→
+[a b c
+0 e' f'
+0 0 i']
 
 Esto se realiza con:
 - `rowswap`: intercambiar filas
@@ -63,19 +56,13 @@ Esto se realiza con:
 
 2. Matriz diagonal
 Posteriormente eliminamos los valores arriba de la diagonal
-\[
-\begin{bmatrix}
-a & b & c \\
-0 & d & e \\
-0 & 0 & f 
-\end{bmatrix}
-\rightarrow
-\begin{bmatrix}
-a & 0 & 0 \\
-0 & d & 0 \\
-0 & 0 & f
-\end{bmatrix}
-\]
+[a b c
+0 d e
+0 0 f]
+→
+[a 0 0
+0 d 0
+0 0 f]
 
 Obtenemos una matriz diagonal equivalente a la original.
 
