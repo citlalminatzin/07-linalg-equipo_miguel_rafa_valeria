@@ -37,6 +37,45 @@ Estos métodos nos permiten resolver sistemas de ecuaciones, y se pueden utiliza
 
 
 ## Ejercicio 1
+Diagonalización por método de Gauss
+Implementamos el método de eliminación gaussiana para transformar una matriz en forma más simple.
+El proceso tiene dos estapas:
+1. Matriz triangular superior 
+$$
+\begin{bmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i 
+\end{bmatrix}
+\righttarrow
+\begin{bmatrix}
+a & b & c \\
+0 & e' & f' \\
+0 & 0 & i' 
+\end{bmatrix}
+$$
+
+Esto se realiza con:
+- `rowswap`: intercambiar filas
+- `rowsum`: sumar múltiplos de filas
+
+2. Matriz diagonal
+Posteriormente eliminamos los valores arriba de la diagonal
+$$
+\begin{bmatrix}
+a & b & c \\
+0 & d & e \\
+0 & 0 & f 
+\end{bmatrix}
+\righttarrow
+\begin{bmatrix}
+a & 0 & 0 \\
+0 & d & 0 \\
+0 & 0 & f
+\end{bmatrix}
+$$
+
+Obtenemos una matriz diagonal equivalente a la original.
 
 ## Ejercicio 2
 
