@@ -26,3 +26,19 @@ La manera y el orden en que se debe de ejecutar los archivos .py es:
 - `lu.py`: dada una matriz M regresa su factorización LU.
 - `qr.py`: realiza la factorización QR de una matriz.
 - `main.py`: contiene el código para llamar e imprimir a las funciones para resolver los ejercicios 1, 2 y 3.
+
+## Introducción
+En esta práctica estamos implementando métodos de álgebra lineal, los cuales permiten transformar matrices y entender su estructura.
+En particular, trabajamos con:
+1. Eliminación gaussiana: simplifica matrices mediante operaciones por filas.
+2. Factorización LU: descompone una matriz en producto de matrices más simples.
+3. Factorización QR: contruimos bases ortogonales y descomponemos matrices.
+Estos métodos nos permiten resolver sistemas de ecuaciones, y se pueden utilizar en modelación u optimización.
+
+
+## Ejercicio 1
+
+## Ejercicio 2
+
+## Ejercicio 3
+
