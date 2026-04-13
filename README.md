@@ -6,7 +6,6 @@
 - Lazcano Flores Valeria  
 - Sánchez García Rafael  
 
----
 
 ## Introducción
 
@@ -25,7 +24,6 @@ Se obtiene una **matriz triangular superior**, y mediante eliminación hacia atr
 
 Para estabilidad numérica se usa **pivoteo parcial**, que consiste en colocar el mayor elemento (en valor absoluto) como pivote.
 
----
 
 ### 2. Factorización LU
 
@@ -47,7 +45,7 @@ $$
 
 donde $P$ es una matriz de permutación.
 
----
+
 
 ### 3. Factorización QR
 
@@ -165,8 +163,6 @@ $$
 L \cdot U = A
 $$
 
----
-
 ### Con pivoteo parcial — $PA = LU$
 Cuando la matriz requiere intercambio de filas para garantizar estabilidad numérica, se incorpora una matriz de permutación $P$ que registra los intercambios. La factorización toma la forma $PA = LU$, donde $P \cdot A$ es la matriz original con sus filas reordenadas.
 
@@ -181,6 +177,8 @@ P =
 1 & 0 & 0 & 0
 \end{bmatrix}
 $$
+
+
 Indicando que las filas fueron reordenadas en orden inverso, y la $U$ resultante coincide con la triangular superior obtenida en el Ejercicio  1
 ---
 
@@ -190,9 +188,12 @@ Se implementó la factorización QR mediante el proceso de Gram-Schmidt y se ver
 ### Proceso de Gram-Schmidt
 
 Dadas las columnas $v_1, \dots, v_n$ de la matriz $A$, se construye una base ortonormal $e_1, \dots, e_n$ mediante:
+
+
 $$
 u_k = v_k - \sum_{j=1}^{k-1} \frac{\langle v_k, u_j \rangle}{\|u_j\|^2} u_j
 $$
+
 
 $$
 e_k = \frac{u_k}{\|u_k\|}
@@ -200,7 +201,6 @@ $$
 
 
 Las columnas $e_1, \dots, e_n$ forman la matriz $Q$, y $R = Q^T A$ resulta triangular superior.
----
 
 ## Resultados
 
@@ -237,7 +237,6 @@ Q \cdot R =
 = A
 $$
 
----
 
 ### Matriz $3 \times 3$
 
