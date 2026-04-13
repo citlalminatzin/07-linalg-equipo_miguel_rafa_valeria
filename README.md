@@ -82,8 +82,13 @@ Archivos:
 ---
 
 ## Ejercicio 1: Diagonalización por método de Gauss
+Se implementó la diagonalización de una matriz cuadrada en dos etapas.
 
-### Matriz triangular superior
+### Etapa 1 — Triangularización (eliminación hacia adelante)
+
+Partiendo de una matriz $A$ de $n \times n$, se aplica eliminación gaussiana con **pivoteo parcial**: en cada columna $i$ se busca el elemento de mayor valor absoluto entre las filas $i, i+1, \dots, n$ y se intercambia con la fila $i$. Esto evita divisiones entre valores cercanos a cero y mejora la estabilidad numérica. Luego se eliminan todos los elementos por debajo del pivote sumando múltiplos apropiados de la fila pivote.
+
+Aplicado sobre la matriz del problema:
 
 $$
 \begin{bmatrix}
@@ -99,7 +104,7 @@ a & b & c \\
 \end{bmatrix}
 $$
 
-Operaciones:
+Esto se realiza con las operaciones:
 - `rowswap`
 - `rowsum`
 
@@ -124,6 +129,10 @@ $$
 ---
 
 ## Ejercicio 2: Factorización LU
+
+Para matrices donde no se requiere intercambio de filas, el algoritmo construye simultáneamente $L$ y $U$: la matriz $U$ se obtiene escalando la matriz original mediante eliminación gaussiana, y los multiplicadores usados en cada paso ($c = a_{ji}/a_{ii}$) se colocan en las posiciones correspondientes de $L$. Como $L$ comienza como la identidad y se llena con los multiplicadores, resulta triangular inferior con unos en la diagonal.
+
+**Resultado** con una matriz $3 \times 3$:
 
 ### Sin pivoteo — $A = LU$
 
@@ -151,7 +160,7 @@ U =
 0 & 0 & 2
 \end{bmatrix}
 $$
-
+**Verificación:**
 $$
 L \cdot U = A
 $$
@@ -159,6 +168,9 @@ $$
 ---
 
 ### Con pivoteo parcial — $PA = LU$
+Cuando la matriz requiere intercambio de filas para garantizar estabilidad numérica, se incorpora una matriz de permutación $P$ que registra los intercambios. La factorización toma la forma $PA = LU$, donde $P \cdot A$ es la matriz original con sus filas reordenadas.
+
+Aplicado sobre la misma matriz del Ejercicio 1, la matriz de permutación obtenida fue:
 
 $$
 P =
@@ -169,13 +181,15 @@ P =
 1 & 0 & 0 & 0
 \end{bmatrix}
 $$
-
+Indicando que las filas fueron reordenadas en orden inverso, y la $U$ resultante coincide con la triangular superior obtenida en el Ejercicio  1
 ---
 
 ## Ejercicio 3: Factorización QR
 
+Se implementó la factorización QR mediante el proceso de Gram-Schmidt y se verificó que $Q \cdot R = A$ en dos matrices aleatorias generadas con `np.random.random`.
 ### Proceso de Gram-Schmidt
 
+Dadas las columnas $v_1, \dots, v_n$ de la matriz $A$, se construye una base ortonormal $e_1, \dots, e_n$ mediante:
 $$
 u_k = v_k - \sum_{j=1}^{k-1} \frac{\langle v_k, u_j \rangle}{\|u_j\|^2} u_j
 $$
@@ -184,6 +198,8 @@ $$
 e_k = \frac{u_k}{\|u_k\|}
 $$
 
+
+Las columnas $e_1, \dots, e_n$ forman la matriz $Q$, y $R = Q^T A$ resulta triangular superior.
 ---
 
 ## Resultados
@@ -260,14 +276,18 @@ Q \cdot R =
 = A
 $$
 
+En ambos casos se observa que $Q$ tiene columnas ortonormales y $R$ es triangular superior con valores positivos en la diagonal, cumpliendo con las propiedades teóricas de la factorización QR.
+
+
 ---
 
 ## Conclusiones
 
-Esta práctica permitió implementar algoritmos fundamentales del álgebra lineal numérica.
 
-- La **eliminación gaussiana con pivoteo parcial** mejora la estabilidad numérica  
-- La **factorización LU** reutiliza los multiplicadores y optimiza la resolución de sistemas  
-- La **factorización QR** construye bases ortonormales y facilita cálculos como eigenvalores  
+Esta práctica nos permitió implementar desde cero tres de los algoritmos más importantes del álgebra lineal numérica, lo que nos dio una comprensión profunda de su funcionamiento interno en lugar de simplemente usarlos como cajas negras.
 
-Estos métodos son clave en simulación, machine learning y cómputo científico.
+En el caso de la **eliminación gaussiana**, la incorporación del pivoteo parcial resultó fundamental: sin él, la presencia de un cero en la diagonal detiene el algoritmo por completo, mientras que con él se garantiza tanto la continuidad del proceso como la estabilidad numérica del resultado.
+
+La **factorización LU** demostró ser una extensión natural de la eliminación gaussiana. Los multiplicadores usados durante la eliminación no se descartan sino que se reutilizan para construir $L$, lo que hace que la factorización sea muy eficiente. La variante con pivoteo parcial ($PA = LU$) amplía el alcance del método a matrices que de otra forma generarían divisiones entre cero.
+
+La **factorización QR** vía Gram-Schmidt mostró cómo construir bases ortonormales de manera sistemática a partir de cualquier conjunto de vectores linealmente independientes. La verificación $QR = A$ en ambas matrices aleatorias confirmó la correctitud de la implementación. Una ventaja clave de esta factorización es que $Q$ es ortogonal, lo que convierte operaciones costosas (como calcular $Q^{-1}$) en operaciones triviales (calcular $Q^T$), con aplicaciones directas en la solución de sistemas de ecuaciones y el cálculo de eigenvalores.
