@@ -1,53 +1,59 @@
 #!/usr/bin/env python
 
-import collections
-import numbers
+from gaussian_elimination import diag
+from qr import qr
+from gram_schmidt import matmul, matrix_to_str
+from lu import lu
 
-from math import pi
+import numpy as np
 
-from linear_solver import solve
-
-# linspace obtenido de (https://code.activestate.com/recipes/579000/)
-class linspace(collections.abc.Sequence):
-    """linspace(start, stop, num) -> linspace object
-    
-    Return a virtual sequence of num numbers from start to stop (inclusive).
-    
-    If you need a half-open range, use linspace(start, stop, num+1)[:-1].
-    """
-    
-    def __init__(self, start, stop, num):
-        if not isinstance(num, numbers.Integral) or num <= 1:
-            raise ValueError('num must be an integer > 1')
-        self.start, self.stop, self.num = start, stop, num
-        self.step = (stop-start)/(num-1)
-    def __len__(self):
-        return self.num
-    def __getitem__(self, i):
-        if isinstance(i, slice):
-            return [self[x] for x in range(*i.indices(len(self)))]
-        if i < 0:
-            i = self.num + i
-        if i >= self.num:
-            raise IndexError('linspace object index out of range')
-        if i == self.num-1:
-            return self.stop
-        return self.start + i*self.step
-    def __repr__(self):
-        return '{}({}, {}, {})'.format(type(self).__name__,
-                                       self.start, self.stop, self.num)
-    def __eq__(self, other):
-        if not isinstance(other, linspace):
-            return False
-        return ((self.start, self.stop, self.num) ==
-                (other.start, other.stop, other.num))
-    def __ne__(self, other):
-        return not self==other
-    def __hash__(self):
-        return hash((type(self), self.start, self.stop, self.num))  
 
 def main():
-    ...
+    arr1 = np.random.random((2, 2))
+    arr2 = np.random.random((3, 3))
+    arrays = [arr1, arr2]
+
+    print("===Ejericio1===")
+    for array in arrays:
+        with np.printoptions(precision=2):
+            print("Matriz inicial")
+            print(array, "\n")
+            print("Diagonal")
+            diagonal = diag(array)
+            print(np.array(diagonal), "\n")
+
+    print("===Ejercicio2===")
+    for array in arrays:
+        with np.printoptions(precision=2):
+            print("Matriz inicial")
+            print(array, "\n")
+            L, U = lu(array)
+            print("Matriz diagonal superior")
+            print(np.array(U), "\n")
+            print("Matriz inferior")
+            print(np.array(L), "\n")
+            print("Producto LU")
+            print(np.array(np.dot(L, U)), "\n")
+            
+    print("===Ejercicio3====")
+    for array in arrays:
+        with np.printoptions(precision=2):
+         print("Matriz inicial")
+         print(array, "\n")
+         A = array.tolist()
+         Q, R = qr(A)
+         print("Matriz Q (ortonormal)")
+         print(np.array(Q), "\n")
+         print("Matriz R (traingular superior)")
+         print(np.array(R), "\n")
+         QR = matmul(Q, R)
+         print("Producto QR")
+         print(np.array(QR), "\n")
+         print("¿QR ≈ A?")
+         if np.allclose(array, np.array(QR)):
+             print("Si coinciden \n")
+         else:
+             print("No coinciden \n")
 
 if __name__ == "__main__":
     main()
