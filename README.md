@@ -82,11 +82,11 @@ Dado que $L$ comienza como la identidad y se va llenando con los multiplicadores
 
 **Verificación** con la matriz:
 
-$$A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$$
+$A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$
 
 Se obtiene:
 
-$$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 3 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$$
+$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 3 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$
 
 Y se verifica que $L \cdot U = A$ con error máximo de $0.0$.
 
@@ -96,7 +96,7 @@ Cuando la matriz requiere intercambio de filas para garantizar estabilidad numé
 
 Para la matriz $A$ del ejercicio 1:
 
-$$P = \begin{bmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{bmatrix}$$
+$P = \begin{bmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{bmatrix}$
 
 La matriz $P$ indica que la fila 1 pasó al lugar de la fila 4, la fila 3 al lugar de la 2, y así sucesivamente. La $U$ resultante coincide con la triangular superior obtenida en el Ejercicio 1.
 
@@ -109,7 +109,7 @@ Se implementó la factorización QR mediante el proceso de Gram-Schmidt y se ver
 
 Dadas las columnas $v_1, \dots, v_n$ de la matriz $A$, se construye una base ortonormal $e_1, \dots, e_n$ mediante:
 
-$$u_k = v_k - \sum_{j=1}^{k-1} \frac{\langle v_k, u_j \rangle}{\|u_j\|^2} u_j, \qquad e_k = \frac{u_k}{\|u_k\|}$$
+$u_k = v_k - \sum_{j=1}^{k-1} \frac{\langle v_k, u_j \rangle}{\|u_j\|^2} u_j, \qquad e_k = \frac{u_k}{\|u_k\|}$
 
 Las columnas $e_1, \dots, e_n$ forman la matriz $Q$, y $R = Q^T A$ resulta triangular superior.
 
@@ -117,19 +117,19 @@ Las columnas $e_1, \dots, e_n$ forman la matriz $Q$, y $R = Q^T A$ resulta trian
 
 **Matriz $2 \times 2$:**
 
-$$A = \begin{bmatrix} 0.04 & 0.28 \\ 0.29 & 0.98 \end{bmatrix}$$
+$A = \begin{bmatrix} 0.04 & 0.28 \\ 0.29 & 0.98 \end{bmatrix}$
 
-$$Q = \begin{bmatrix} 0.12 & 0.99 \\ 0.99 & -0.12 \end{bmatrix}, \quad R = \begin{bmatrix} 0.29 & 1.01 \\ 0 & 0.16 \end{bmatrix}$$
+$Q = \begin{bmatrix} 0.12 & 0.99 \\ 0.99 & -0.12 \end{bmatrix}, \quad R = \begin{bmatrix} 0.29 & 1.01 \\ 0 & 0.16 \end{bmatrix}$
 
-$$Q \cdot R = \begin{bmatrix} 0.04 & 0.28 \\ 0.29 & 0.98 \end{bmatrix} = A \checkmark$$
+$Q \cdot R = \begin{bmatrix} 0.04 & 0.28 \\ 0.29 & 0.98 \end{bmatrix} = A \checkmark$
 
 **Matriz $3 \times 3$:**
 
-$$A = \begin{bmatrix} 0.79 & 0.57 & 0.52 \\ 0.26 & 0.17 & 0.91 \\ 0.23 & 0.57 & 0.38 \end{bmatrix}$$
+$A = \begin{bmatrix} 0.79 & 0.57 & 0.52 \\ 0.26 & 0.17 & 0.91 \\ 0.23 & 0.57 & 0.38 \end{bmatrix}$
 
-$$Q = \begin{bmatrix} 0.91 & -0.23 & -0.33 \\ 0.30 & -0.14 & 0.94 \\ 0.27 & 0.96 & 0.05 \end{bmatrix}, \quad R = \begin{bmatrix} 0.86 & 0.73 & 0.85 \\ 0 & 0.39 & 0.12 \\ 0 & 0 & 0.71 \end{bmatrix}$$
+$Q = \begin{bmatrix} 0.91 & -0.23 & -0.33 \\ 0.30 & -0.14 & 0.94 \\ 0.27 & 0.96 & 0.05 \end{bmatrix}, \quad R = \begin{bmatrix} 0.86 & 0.73 & 0.85 \\ 0 & 0.39 & 0.12 \\ 0 & 0 & 0.71 \end{bmatrix}$
 
-$$Q \cdot R = \begin{bmatrix} 0.79 & 0.57 & 0.52 \\ 0.26 & 0.17 & 0.91 \\ 0.23 & 0.57 & 0.38 \end{bmatrix} = A \checkmark$$
+$Q \cdot R = \begin{bmatrix} 0.79 & 0.57 & 0.52 \\ 0.26 & 0.17 & 0.91 \\ 0.23 & 0.57 & 0.38 \end{bmatrix} = A \checkmark$
 
 En ambos casos se observa que $Q$ tiene columnas ortonormales y $R$ es triangular superior con valores positivos en la diagonal, cumpliendo con las propiedades teóricas de la factorización QR.
 
